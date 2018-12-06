@@ -25,6 +25,15 @@ router.get('/all', (req, res) => {
   
 });
 
+router.get('/create/:username', (req, res) => {
+  var userName = req.params.username || '';
+  if (!userName) return;
+  User.create({ name: userName }, function (err, user) {
+    console.log("user: "+user)
+    // saved!
+  });
+});
+
 router.get('/comment', (req, res) => {
   User.findOne({'name':'ABC'}, function(err,data ){
     var newComment = new Comment({

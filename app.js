@@ -18,7 +18,7 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
   // we're connected!
   app.listen(port, () => {
-    console.log(`Server started on port`);
+    console.log(`Server started on port ${port}`);
   });
 });
 
