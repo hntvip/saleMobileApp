@@ -28,20 +28,25 @@ router.get('/updateAll', (req, res) => {
   get(url).then(function(data){
     data.forEach(element => {
      var _code = element.code;
-     Product.findOneAndUpdate({code:_code},
-      {
-        $set: {
-          code: element.code,
-          name: element.name,
-          img: element.img,
-          quantity: element.quantity,
-          text: element.text,
-          khohang:"TU"
-        }
-      }
-      ).then(function (res) {
-        console.log("yes")
-      })
+    promise.promisify(Product.findOneAndUpdate({code:_code})).then(product =>{
+      console.log("asdasdasd")
+    })
+    // Product.findOneAndUpdate({code:_code},
+    //   {
+    //     $set: {
+    //       code: element.code,
+    //       name: element.name,
+    //       img: element.img,
+    //       quantity: element.quantity,
+    //       text: element.text,
+    //       khohang:"TU"
+    //     }
+    //   }
+    //   ).exec()
+    //   .then(books=>{
+    //     console.log("Hello done")
+    //     // console.log(books)
+    //   })
     });
   })
 });
@@ -52,6 +57,19 @@ router.get('/deleteAll', function(req, res, next) {
     res.status(200).json("DONE");
   })
 });
+
+router.get('/showAll', function(req, res, next) {
+  var baseUrl ='https://sales.hncgroup.vn';
+  get(baseUrl+'/ajax-list-san-pham').then(function(data){
+    return res.render('../views/product-list',{
+      headers: ["Hình Ảnh", "Thuộc Tính","Số lượng"],
+      baseUrl: baseUrl,
+      products: data
+    });
+  })
+  
+});
+
 module.exports = router;
 
 function get(url) {

@@ -11,7 +11,7 @@ module.exports = app;
 require('./express')(app);
 // connect();
 require('./routes/routes')(app);
-
+mongoose.Promise = require('bluebird');
 mongoose.connect('mongodb://localhost:27017/mydatabase',{ useNewUrlParser: true });
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
