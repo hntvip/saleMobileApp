@@ -1,0 +1,19 @@
+extends layout
+block product
+
+  h1 PRODUCT LIST
+
+  table.table.table-dark
+    tr
+      each header in headers
+        th #{header}
+    each product in products
+      tr
+        td 
+          img(src="#{baseUrl}#{product.img}", width="100", height="100")
+        td 
+          ul
+            li ID: #{product.id}
+            li code: #{product.code}
+            li name: #{product.text}
+        td #{product.quantity}

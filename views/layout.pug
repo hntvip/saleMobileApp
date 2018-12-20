@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+  body
+    .container-fluid
+      .row.flex-xl-nowrap
+        .col-12.col-md-3.col-xl-2.bd-sidebar
+          div sideBar
+        main.col-12.col-md-9.col-xl-8.py-md-3.pl-md-5.bd-content
+          block content
+          block product
