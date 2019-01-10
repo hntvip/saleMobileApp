@@ -59,7 +59,7 @@ router.get('/deleteAll', function(req, res, next) {
 });
 
 router.get('/showAll', function(req, res, next) {
-  var baseUrl ='https://sales.hncgroup.vn';
+  var baseUrl = 'https://sales.hncgroup.vn';
   get(baseUrl+'/ajax-list-san-pham').then(function(data){
     return res.render('../views/product-list',{
       headers: ["Hình Ảnh", "Thuộc Tính","Số lượng"],

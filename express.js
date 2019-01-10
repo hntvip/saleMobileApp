@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const cors = require('cors');
+var bodyParser = require('body-parser');
 
 module.exports = function(app){
     // view engine setup
@@ -11,6 +12,7 @@ module.exports = function(app){
     app.set('view engine', 'pug');
 
     app.use(logger('dev'));
+    app.use(bodyParser.json());
     app.use(express.json());
     app.use(express.urlencoded({ extended: false }));
     app.use(cookieParser());

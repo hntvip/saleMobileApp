@@ -10,10 +10,11 @@ block product
     each product in products
       tr
         td 
-          img(src="#{baseUrl}#{product.img}", width="100", height="100")
+          img(src=baseUrl+product.img, width="100", height="100")
         td 
           ul
             li ID: #{product.id}
             li code: #{product.code}
             li name: #{product.text}
         td #{product.quantity}
+        td #{baseUrl+product.img}
